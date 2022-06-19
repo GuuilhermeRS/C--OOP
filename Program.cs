@@ -2,33 +2,27 @@
 using System.Globalization;
 
 namespace OOP {
-    class Pessoa {
+    class Funcionario {
         public string? Name;
-        public int Age;
+        public float Salario;
     }
 
     class program {
         static void Main() {
-            Pessoa a, b;
-            a = new Pessoa();
-            b = new Pessoa();
+            Funcionario a, b;
+            a = new Funcionario();
+            b = new Funcionario();
 
-            Console.WriteLine("Pessoa 1:\nDigite seu nome e sua idade: ");
+            Console.WriteLine("Dados do primeiro funcionario:");
             a.Name = Console.ReadLine();
-            a.Age = int.Parse(Console.ReadLine());
-            Console.WriteLine("Pessoa 2:\nDigite seu nome e sua idade: ");
+            a.Salario = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.WriteLine("Dados do segundo funcionario: ");
             b.Name = Console.ReadLine();
-            b.Age = int.Parse(Console.ReadLine());
+            b.Salario = float.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            Pessoa mais_velha = maisVelha(a, b);
-            Console.WriteLine($"Pessoa mais velha: {mais_velha.Name}");
-        }
-
-        static Pessoa maisVelha(Pessoa a, Pessoa b) {
-            if (a.Age > b.Age)
-                return a;
-            else
-                return b;
+            float salario_medio = (a.Salario + b.Salario) / 2;
+            Console.WriteLine($"Salário Médio: {salario_medio}");
         }
     }
 }
