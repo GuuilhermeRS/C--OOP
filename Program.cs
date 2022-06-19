@@ -2,35 +2,33 @@
 using System.Globalization;
 
 namespace OOP {
-    internal class Triangulo {
-        public double A, B, C;
+    class Pessoa {
+        public string? Name;
+        public int Age;
     }
 
     class program {
         static void Main() {
-            Triangulo x, y;
-            x = new Triangulo();
-            y = new Triangulo();
+            Pessoa a, b;
+            a = new Pessoa();
+            b = new Pessoa();
 
-            Console.WriteLine("Entre com as medidas do triangulo X: ");
-            x.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            x.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            x.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.WriteLine("Pessoa 1:\nDigite seu nome e sua idade: ");
+            a.Name = Console.ReadLine();
+            a.Age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Pessoa 2:\nDigite seu nome e sua idade: ");
+            b.Name = Console.ReadLine();
+            b.Age = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Entre com as medidas do triangulo Y: ");
-            y.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            y.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            y.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Pessoa mais_velha = maisVelha(a, b);
+            Console.WriteLine($"Pessoa mais velha: {mais_velha.Name}");
+        }
 
-            double p = (x.A + x.B + x.C) / 2.0;
-            double areaX = Math.Sqrt(p * (p - x.A) * (p - x.B) * (p - x.C));
-
-            p = (y.A + y.B + y.C) / 2.0;
-            double areaY = Math.Sqrt(p * (p - y.A) * (p - y.B) * (p - y.C));
-
-
-            Console.WriteLine($"Area X: {areaX.ToString("F4", CultureInfo.InvariantCulture)}");
-            Console.WriteLine($"Area Y: {areaY.ToString("F4", CultureInfo.InvariantCulture)}");
+        static Pessoa maisVelha(Pessoa a, Pessoa b) {
+            if (a.Age > b.Age)
+                return a;
+            else
+                return b;
         }
     }
 }
